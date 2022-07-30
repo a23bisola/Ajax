@@ -12,15 +12,20 @@
 <body>
 
 <h1>List of Live Data</h1>
-<ul id="display">
+<ol id="display">
 
-</ul>
+</ol>
+<!-- <table >
+  <tbody id="display">
+
+  </tbody>
+
+</table> -->
 
 
 
 
-
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   $(document).ready(function(){
     setInterval(function(){
       $.ajax({
@@ -31,9 +36,15 @@
           $("#display").empty();
           for (var key in response.profiles)
           {
-            var temp ="<h2><li>"+response.profiles[key].name+"</li></h2>";
+            // var temp ="<h6><li>"+response.profiles[key].name+"</li></h6>";
+            var temp ="<li>"+response.profiles[key].name+"</li>";
+            var tempp ="<li>"+response.profiles[key].email+"</li>";
+            var temppp ="<li>"+response.profiles[key].bio+"</li>";
+
 
             $("#display").append(temp);
+            $("#display").append(tempp);
+            $("#display").append(temppp);
 
           }
         },
@@ -43,7 +54,7 @@
       });
     }, 1000);
   });
-</script> -->
+</script>
 
 <!-- <script type="text/javascript">
   $(document).on("submit", "#post-form",function(e){

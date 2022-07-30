@@ -5,8 +5,11 @@ from .models import *
 
 
 def home(request):
-    return render(request, 'show.html')
+    return render(request, 'index.html')
 
+
+def homecreate(request):
+    return render(request, 'create.html')
 
 def getprofiles(request):
     profiles=Profile.objects.all()
