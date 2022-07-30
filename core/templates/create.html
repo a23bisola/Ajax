@@ -17,10 +17,15 @@
   <p>Name</p><input type="text" name="name" id="name">
   <p>Email</p><input type="email" name="email" id="email">
   <p>Bio</p><input type="text" name="bio" id="bio">
-
+  <br>
+  <br>
   <input type="submit"/>
-</form>
 
+</form>
+<hr>
+<div id="display">
+
+</div>
 
 
 <script type="text/javascript">
@@ -44,6 +49,41 @@
       });
   });
 </script>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    setInterval(function(){
+      $.ajax({
+        type:'GET',
+        url:"{% url 'getprofiles' %}",
+        success: function(response){
+          console.log(response);
+          $("#display").empty();
+          for (var key in response.profiles)
+          {
+            // var temp ="<h6><li>"+response.profiles[key].name+"</li></h6>";
+            var temp ="<p>"+response.profiles[key].name+"</p>";
+            var tempp ="<p>"+response.profiles[key].email+"</p>";
+            var temppp ="<p>"+response.profiles[key].bio+"</p>";
+
+
+            $("#display").append(temp);
+            $("#display").append(tempp);
+            $("#display").append(temppp);
+
+
+          }
+        },
+        error:function(response){
+          alert("error Occured")
+        }
+      });
+    }, 1000);
+  });
+</script>
+
+
 
 
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
